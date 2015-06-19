@@ -1,0 +1,43 @@
+html, body, div {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    color: #222222;
+}
+
+main {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.list-view {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.list-view article {
+    padding: 2em;
+    color: #777;
+}
+
+.list-view article.active {
+    color: #000;
+}
+
+.list-view article h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+}
+
+.list-view article p {
+    margin: 0.5em 0em 0em;
+    padding: 0;
+}
