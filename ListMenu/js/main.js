@@ -49,8 +49,8 @@ function moveListViewToScrollPosition(coords) {
 
 function highLightArticleAtScrollPosition(coords) {
     articles.each(function (index) {
-        var articleRelativeTopPosition = $(this).offset().top / main.height() * 100;
-        var articleRelativeBottomPosition = ($(this).offset().top + $(this).height()) / main.height() * 100;
+        var articleRelativeTopPosition = $(this).offset().top / listView.height() * 100;
+        var articleRelativeBottomPosition = ($(this).offset().top + $(this).height()) / listView.height() * 100;
         var selectionRelativePosition = (-coords[1] + 100);
         if (selectionRelativePosition > articleRelativeTopPosition && selectionRelativePosition < articleRelativeBottomPosition) {
             $(this).addClass('active');
