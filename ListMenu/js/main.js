@@ -18,7 +18,7 @@ var controller = Leap.loop(controllerOptions, function (frame) {
     
     if (coords) {
         moveListViewToScrollPosition(coords);
-        highLightArticleAtScrollPosition(coords);
+        highLightArticleAtScrollPosition(coords, frame);
     }
 });
 
@@ -47,15 +47,32 @@ function moveListViewToScrollPosition(coords) {
     }
 }
 
-function highLightArticleAtScrollPosition(coords) {
+function highLightArticleAtScrollPosition(coords, frame) {
     articles.each(function (index) {
-        var articleRelativeTopPosition = $(this).offset().top / listView.height() * 100;
-        var articleRelativeBottomPosition = ($(this).offset().top + $(this).height()) / listView.height() * 100;
+        var articleRelativeTopPosition = $(this).position().top / main.height() * 100;
+        var articleRelativeBottomPosition = ($(this).position().top + $(this).innerHeight()) / main.height() * 100;
         var selectionRelativePosition = (-coords[1] + 100);
         if (selectionRelativePosition > articleRelativeTopPosition && selectionRelativePosition < articleRelativeBottomPosition) {
-            $(this).addClass('active');
+            $(this).addClass('hover');
+            handleGestures(frame, $(this));
         } else {
-            $(this).removeClass('active');
+            $(this).removeClass('hover');
         }
     });
+}
+
+function handleGestures(frame, selectedArticle) {
+    if (frame.valid && frame.gestures.length > 0) {
+        for (var i = 0; i < frame.gestures.length; i++) {
+            var gesture = frame.gestures[i];
+            switch (gesture.type) {
+                case 'keyTap':
+                    selectedArticle.addClass('active');
+                    setTimeout(function () {
+                        selectedArticle.removeClass('active');
+                    }, 200);
+                    break;
+            }
+        }
+    }
 }
