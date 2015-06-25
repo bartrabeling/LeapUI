@@ -1,0 +1,47 @@
+html, body, div {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    color: #222222;
+}
+
+.clear {
+    clear: both;
+}
+
+main {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.main-menu {
+    position: relative;
+}
+
+.page {
+    margin: 0;
+}
+
+.menu-item {
+    width: 25%;
+    height: 5em;
+    float: left;
+    opacity: 0.2;
+    transition: opacity 0.1s, box-shadow 0.1s;
+}
+
+.menu-item.hover {
+    opacity: 1;
+    box-shadow: 0px 0px 1em #000;
+}
+
+.menu-item.active {
+    box-shadow: 0px 0px 3em #000;
+}
